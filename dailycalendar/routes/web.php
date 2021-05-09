@@ -26,7 +26,7 @@ Route::get('load-events', [EventController::class, 'loadEvents'])->name('routeLo
 Route::put('/event-update',[EventController::class, 'update'])->name('routeEventUpdate');
 Route::post('/event-store',[EventController::class, 'store'])->name('routeEventStore');
 Route::delete('/event-delete',[EventController::class, 'destroy'])->name('routeEventDelete');
-
+Route::delete('/fast-event-delete',[FastEventController::class, 'destroy'])->name('routeFastEventDelete');
 
 
 

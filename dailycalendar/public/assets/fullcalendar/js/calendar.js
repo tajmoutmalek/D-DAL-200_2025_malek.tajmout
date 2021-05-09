@@ -38,6 +38,9 @@
         if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
           element.draggedEl.parentNode.removeChild(element.draggedEl);
+
+          Event._method= "DELETE";
+          sendEvent('/fast-event-delete', Event);
         }
 
        
@@ -46,9 +49,10 @@
         Event.start= start ;
         Event.end = end; 
         delete Event.id ;
+        delete Event._method ;
 
         sendEvent('/event-store', Event);
-        console.log(Event); 
+        
      
       },
 

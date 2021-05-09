@@ -24,11 +24,19 @@
   <div id='wrap'>
 
     <div id='external-events'>
-      <h4>Draggable Events</h4>
+      <h4>Quick Events</h4>
 
       <div id='external-events-list'>
         <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-          <div class='fc-event' data-event='{"id":"99","title":"test","color":"#c402d3","start":"12:00:00","end":"12:30:00"}'>My Event 1</div>
+           @if($fastEvents)
+               @foreach($fastEvents as $fastEvent)
+          <div style="padding: 4px; border: 1px solid {{ $fastEvent->color}}; background-color: {{ $fastEvent->color}} " class='fc-event' data-event='{"id":"{{ $fastEvent->id}}","title":"{{ $fastEvent->title}}","color":"{{ $fastEvent->color}}","start":"{{ $fastEvent->start}}","end":"{{ $fastEvent->end}}","description : "{{ $fastEvent->description}}"}'>{{ $fastEvent->title }}</div>
+           
+
+               @endForeach
+            @endif
+
+         
           </div>
         </div>
 
@@ -36,6 +44,8 @@
       <p>
         <input type='checkbox' id='drop-remove' />
         <label for='drop-remove'>remove after drop</label>
+        <button type="button" class="btn btn-success btn-sm" style="padding: 1px" href="{{ '/load-events'}}">Create a new event</button>
+
       </p>
     </div>
     @csrf
@@ -45,9 +55,11 @@
       <div 
       id='calendar'
       data-route-load-events="{{ route('routeLoadEvents')}}"
-      data-route-load-update="{{ route('routeEventUpdate')}}"
-      data-route-load-store="{{ route('routeEventStore')}}"
-      data-route-load-delete="{{ route('routeEventDelete')}}">
+      data-route-event-update="{{ route('routeEventUpdate')}}"
+      data-route-event-store="{{ route('routeEventStore')}}"
+      data-route-event-delete="{{ route('routeEventDelete')}}"
+      data-route-fast-event-delete="{{ route('routeFastEventDelete')}}">
+
       </div>
 
    
