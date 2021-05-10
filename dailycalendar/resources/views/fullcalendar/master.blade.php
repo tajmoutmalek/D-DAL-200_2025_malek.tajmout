@@ -21,30 +21,32 @@
 
 <body>
   @include('fullcalendar.modal-calendar')
+  @include('fullcalendar.modal-fastEvents')
+
   <div id='wrap'>
 
     <div id='external-events'>
       <h4>Quick Events</h4>
 
       <div id='external-events-list'>
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+      
            @if($fastEvents)
                @foreach($fastEvents as $fastEvent)
-          <div style="padding: 4px; border: 1px solid {{ $fastEvent->color}}; background-color: {{ $fastEvent->color}} " class='fc-event' data-event='{"id":"{{ $fastEvent->id}}","title":"{{ $fastEvent->title}}","color":"{{ $fastEvent->color}}","start":"{{ $fastEvent->start}}","end":"{{ $fastEvent->end}}","description : "{{ $fastEvent->description}}"}'>{{ $fastEvent->title }}</div>
+          <div style="padding: 4px; border: 1px solid {{ $fastEvent->color}}; background-color: {{ $fastEvent->color}} " class='fc-event' data-event='{"id":"{{ $fastEvent->id}}","title":"{{ $fastEvent->title}}","color":"{{ $fastEvent->color}}","start":"{{ $fastEvent->start}}","end":"{{ $fastEvent->end}}"}'>{{ $fastEvent->title }}</div>
            
 
                @endForeach
             @endif
 
          
-          </div>
+         
         </div>
 
        
       <p>
         <input type='checkbox' id='drop-remove' />
         <label for='drop-remove'>remove after drop</label>
-        <button type="button" class="btn btn-success btn-sm" style="padding: 1px" href="{{ '/load-events'}}">Create a new event</button>
+        <button  type="button" class="btn btn-success btn-sm" id="newFastEvent"style="padding: 1px">Create a new event</button>
 
       </p>
     </div>
@@ -58,7 +60,9 @@
       data-route-event-update="{{ route('routeEventUpdate')}}"
       data-route-event-store="{{ route('routeEventStore')}}"
       data-route-event-delete="{{ route('routeEventDelete')}}"
-      data-route-fast-event-delete="{{ route('routeFastEventDelete')}}">
+      data-route-fast-event-delete="{{ route('routeFastEventDelete')}}"
+      data-route-fast-event-update="{{ route('routeFastEventUpdate')}}"
+      data-route-fast-event-store="{{ route('routeFastEventStore')}}">
 
       </div>
 

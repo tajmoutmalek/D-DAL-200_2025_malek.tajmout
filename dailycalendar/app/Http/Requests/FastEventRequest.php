@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EventRequest extends FormRequest
+class FastEventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class EventRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,10 +23,10 @@ class EventRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+         return [
             'title' => 'required|min:3',
-            'start' => 'date_format:Y-m-d H:i:s|before:end',
-            'end' => 'date_format:Y-m-d H:i:s|after:start',
+            'start' => 'date_format: H:i:s|before:end',
+            'end' => 'date_format: H:i:s|after:start',
 
         ];
     }
@@ -42,5 +42,6 @@ class EventRequest extends FormRequest
             'end.after' => 'The start date/time must be more than the start date!',
 
         ];
+    
     }
 }

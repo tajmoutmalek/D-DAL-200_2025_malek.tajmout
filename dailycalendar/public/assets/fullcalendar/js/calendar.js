@@ -33,7 +33,12 @@
       droppable: true, // this allows things to be dropped onto the calendar
       drop: function(element) {
 
+
+
         let Event= JSON.parse(element.draggedEl.dataset.event) ;
+        
+         
+
         // is the "remove after drop" checkbox checked?
         if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
@@ -44,10 +49,11 @@
         }
 
        
-        start = moment(`${element.dataStr} ${Event.start}`).format("YYYY-MM-DD HH:mm:ss");
-        end = moment(`${element.dataStr} ${Event.end}`).format("YYYY-MM-DD HH:mm:ss");
-        Event.start= start ;
-        Event.end = end; 
+        //start = moment(`${element.dateStr}`).format("YYYY-MM-DD HH:mm:ss");
+        //end = moment(`${element.dateStr}`).format("YYYY-MM-DD HH:mm:ss");
+        Event.start= element.dateStr+" 00:00:00" ;
+        Event.end = element.dateStr+" 02:00:00"; 
+
         delete Event.id ;
         delete Event._method ;
 
@@ -76,7 +82,7 @@
 
       eventClick: function(element){
 
-        clearMessages('#message');
+        clearMessages('.message');
         resetForm("#formEvent");
 
         resetForm("#formEvent") ;
@@ -117,7 +123,7 @@
 
       select: function(element){
 
-        clearMessages('#message');
+        clearMessages('.message');
       
         resetForm("#formEvent") ;
         $("#modalCalendar").modal('show');

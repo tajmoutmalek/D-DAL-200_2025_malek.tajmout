@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FastEventController;
+
 
 
 /*
@@ -22,11 +24,15 @@ Route::get('/', function () {
 });
 
 Route::get('full-calendar', [FullCalendarController::class, 'index']);
+
 Route::get('load-events', [EventController::class, 'loadEvents'])->name('routeLoadEvents');
 Route::put('/event-update',[EventController::class, 'update'])->name('routeEventUpdate');
 Route::post('/event-store',[EventController::class, 'store'])->name('routeEventStore');
 Route::delete('/event-delete',[EventController::class, 'destroy'])->name('routeEventDelete');
+
 Route::delete('/fast-event-delete',[FastEventController::class, 'destroy'])->name('routeFastEventDelete');
+Route::put('/fast-event-update',[FastEventController::class, 'update'])->name('routeFastEventUpdate');
+Route::post('/fast-event-store',[FastEventController::class, 'store'])->name('routeFastEventStore');
 
 
 

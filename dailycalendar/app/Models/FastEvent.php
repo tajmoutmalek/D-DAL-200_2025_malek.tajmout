@@ -9,5 +9,5 @@ class FastEvent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'start', 'end', 'color','description'];
+    protected $fillable = ['title', 'start', 'end', 'color',];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\FastEvent;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,10 @@ class EventController extends Controller
     }
 
     public function store(EventRequest $request){
+        
 
     	Event::create($request->all());
+
 
     	return response()->json(true);
     }
@@ -26,7 +29,7 @@ class EventController extends Controller
     {
     	$event = Event::where('id', $request->id)->first();
 
-    	$event->fill($request->all);
+    	$event->fill($request->all());
 
     	$event->save();
 
@@ -37,7 +40,7 @@ class EventController extends Controller
     {
     	Event::where('id',$request->id)->delete();
 
-    	return respone()->json(true);
+    	return response()->json(true);
     }
 
 }

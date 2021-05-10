@@ -19,6 +19,7 @@ class FastEventSeeder extends Seeder
         		'start' => '2021-01-01 10:00:00',
         	    'end' => '2021-01-01 13:00:00',
         	    'color' =>'#c40233',
+                'description' => ''
         	   
         	],
         	[
@@ -26,6 +27,8 @@ class FastEventSeeder extends Seeder
         		'start' => ' 2021-01-01 17:00:00',
         	  'end' => ' 2021-01-01 19:30:00',
         	  'color' =>'#29fdf2',
+              'description' => ''
+
         
         	]
 
