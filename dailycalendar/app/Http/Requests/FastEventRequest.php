@@ -13,7 +13,7 @@ class FastEventRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,8 +25,8 @@ class FastEventRequest extends FormRequest
     {
          return [
             'title' => 'required|min:3',
-            'start' => 'date_format: H:i:s|before:end',
-            'end' => 'date_format: H:i:s|after:start',
+            'start' => 'date_format:H:i:s|before:end',
+            'end' => 'date_format:H:i:s|after:start',
 
         ];
     }
@@ -37,9 +37,9 @@ class FastEventRequest extends FormRequest
             'title.required' => 'Fill the Title field',
             'title.min' => 'The title needs at least 03 characters!',
             'start.date_format' => 'Fill the start date with a valid amount!',
-            'start.before' => 'The start date/time must be less than the end date!',
+            'start.before' => 'The start time must be less than the end date!',
             'end.date_format' => 'Fill the end date with a valid amount!',
-            'end.after' => 'The start date/time must be more than the start date!',
+            'end.after' => 'The start time must be more than the start date!',
 
         ];
     

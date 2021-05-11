@@ -16,8 +16,8 @@ class CreateFastEventsTable extends Migration
         Schema::create('fast_events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->dateTime('start');
-            $table->dateTime('end');
+            $table->time('start');
+            $table->time('end');
             $table->string('color', 7);
             $table->timestamps();
             $table->softDeletes();

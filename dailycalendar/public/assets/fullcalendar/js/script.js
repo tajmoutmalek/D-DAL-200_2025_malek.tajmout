@@ -97,7 +97,7 @@ $(function(){
 
 		
 
-       sendEvent('/routeFastEventDelete',Event);
+       sendEvent('/fast-event-delete',Event);
 
 	});
 
@@ -164,6 +164,9 @@ function sendEvent(route, data_){
 		data: data_,
 		method: 'POST',
 		dataType: 'json',
+		headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
 		success:function (json) {
 			if(json){
 				location.reload();

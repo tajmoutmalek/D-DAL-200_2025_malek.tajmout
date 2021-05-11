@@ -19,7 +19,7 @@ class FastEventController extends Controller
     }
 
      public function store(FastEventRequest $request){
-        
+      
 
     	FastEvent::create($request->all());
 
